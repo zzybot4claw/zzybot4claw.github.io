@@ -5,180 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zhenyu Zhang - Academic Homepage</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-            padding: 40px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #eee;
-        }
-        h1 {
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .affiliation {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .affiliation a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .affiliation a:hover {
-            text-decoration: underline;
-        }
-        .contact-info {
-            margin-top: 15px;
-            font-size: 0.95em;
-            color: #555;
-        }
-        .contact-info a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        section {
-            margin-bottom: 35px;
-        }
-        h2 {
-            font-size: 1.5em;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-        }
-        .research-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .interest-tag {
-            background: #e8f4f8;
-            color: #2980b9;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .publication {
-            margin-bottom: 25px;
-            padding: 15px;
-            background: #fafafa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-        .publication:hover {
-            background: #f0f0f0;
-        }
-        .publication-title {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-        .publication-authors {
-            color: #555;
-            margin-bottom: 5px;
-        }
-        .publication-authors strong {
-            color: #2980b9;
-        }
-        .publication-venue {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        .publication-doi {
-            display: inline-block;
-            background: #27ae60;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.85em;
-        }
-        .publication-doi:hover {
-            background: #219a52;
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #888;
-            font-size: 0.9em;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; padding: 40px; }
+        .lang-switch { position: absolute; top: 20px; right: 20px; }
+        .lang-switch button { padding: 8px 16px; margin-left: 5px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; }
+        .lang-switch button.active { background: #3498db; color: white; border-color: #3498db; }
+        header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #eee; }
+        h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
+        .affiliation { font-size: 1.2em; color: #666; margin-bottom: 10px; }
+        .affiliation a { color: #3498db; text-decoration: none; }
+        .contact-info { margin-top: 15px; font-size: 0.95em; color: #555; }
+        .contact-info a { color: #3498db; text-decoration: none; }
+        section { margin-bottom: 35px; }
+        h2 { font-size: 1.5em; color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #3498db; }
+        .research-interests { display: flex; flex-wrap: wrap; gap: 10px; }
+        .interest-tag { background: #e8f4f8; color: #2980b9; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; }
+        .publication { margin-bottom: 25px; padding: 15px; background: #fafafa; border-radius: 8px; border-left: 4px solid #3498db; }
+        .publication-title { font-size: 1.1em; font-weight: 600; color: #2c3e50; margin-bottom: 8px; }
+        .publication-authors { color: #555; margin-bottom: 5px; }
+        .publication-authors strong { color: #2980b9; }
+        .publication-venue { font-style: italic; color: #666; margin-bottom: 8px; }
+        .publication-doi { display: inline-block; background: #27ae60; color: white; padding: 4px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85em; }
+        footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; color: #888; font-size: 0.9em; }
+        .zh { display: none; }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="lang-switch">
+            <button onclick="setLang('en')" id="btn-en" class="active">English</button>
+            <button onclick="setLang('zh')" id="btn-zh">中文</button>
+        </div>
+        
         <header>
-            <h1>Zhenyu Zhang (张振宇)</h1>
-            <p class="affiliation">
-                <a href="https://www.swjtu.edu.cn" target="_blank">Southwest Jiaotong University</a>, Chengdu, China
-            </p>
-            <p class="affiliation">Ph.D. Candidate</p>
+            <h1><span class="en">Zhenyu Zhang</span><span class="zh">张振宇</span></h1>
+            <p class="affiliation"><a href="https://www.swjtu.edu.cn" target="_blank">Southwest Jiaotong University</a>, Chengdu, China</p>
+            <p class="affiliation"><span class="en">Ph.D. Candidate</span><span class="zh">博士研究生</span></p>
             <div class="contact-info">
-                <p>📧 Email: <a href="mailto:zhenyu.zhang@swjtu.edu.cn">zhenyu.zhang@swjtu.edu.cn</a></p>
-                <p>🔗 ORCID: <a href="https://orcid.org/0009-0004-6613-4551" target="_blank">0009-0004-6613-4551</a></p>
+                <p><span class="en">Email:</span><span class="zh">邮箱:</span> <a href="https://orcid.org/0009-0004-6613-4551" target="_blank">View on ORCID</a></p>
+                <p>ORCID: <a href="https://orcid.org/0009-0004-6613-4551" target="_blank">0009-0004-6613-4551</a></p>
             </div>
         </header>
 
         <section>
-            <h2>📚 Research Interests</h2>
+            <h2><span class="en">Research Interests</span><span class="zh">研究方向</span></h2>
             <div class="research-interests">
-                <span class="interest-tag">Orthogonal Time Frequency Space (OTFS)</span>
-                <span class="interest-tag">Wireless Communications</span>
-                <span class="interest-tag">Channel Estimation</span>
-                <span class="interest-tag">Next Generation Wireless Systems</span>
+                <span class="interest-tag">OTFS</span>
+                <span class="interest-tag"><span class="en">Wireless Communications</span><span class="zh">无线通信</span></span>
+                <span class="interest-tag"><span class="en">Channel Estimation</span><span class="zh">信道估计</span></span>
+                <span class="interest-tag"><span class="en">Next Generation Wireless</span><span class="zh">下一代无线通信</span></span>
             </div>
         </section>
 
         <section>
-            <h2>📖 Publications</h2>
+            <h2><span class="en">Publications</span><span class="zh">发表论文</span></h2>
             
             <div class="publication">
                 <p class="publication-title">Cross-Frame OTFS Parameter Estimation Based on Chinese Remainder Theorem</p>
                 <p class="publication-authors"><strong>Z. Zhang</strong>, Q. Wang, G. Liu, F. Gao, and P. Fan</p>
-                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 2514–2527, 2026</p>
+                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 2514-2527, 2026</p>
                 <a class="publication-doi" href="https://doi.org/10.1109/TWC.2025.3596965" target="_blank">DOI</a>
             </div>
 
             <div class="publication">
                 <p class="publication-title">Channel Estimation in Cross-Frame OTFS System With Ultra-High Mobility</p>
                 <p class="publication-authors"><strong>Z. Zhang</strong>, Q. Wang, G. Liu, P. Fan, and F. Gao</p>
-                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 12883–12896, 2026</p>
+                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 12883-12896, 2026</p>
                 <a class="publication-doi" href="https://doi.org/10.1109/TWC.2026.3668101" target="_blank">DOI</a>
             </div>
 
             <div class="publication">
                 <p class="publication-title">An AOA Limited Scattering Model and Its Statistics in Next Generation Wireless Communications</p>
                 <p class="publication-authors"><strong>Z. Zhang</strong> and P. Deng</p>
-                <p class="publication-venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 3, pp. 5130–5134, Mar. 2025</p>
+                <p class="publication-venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 3, pp. 5130-5134, Mar. 2025</p>
                 <a class="publication-doi" href="https://doi.org/10.1109/TVT.2024.3492232" target="_blank">DOI</a>
             </div>
         </section>
 
         <footer>
-            <p>Last updated: March 2026</p>
+            <p><span class="en">Last updated:</span><span class="zh">最后更新:</span> March 2026</p>
         </footer>
     </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.querySelectorAll('.zh').forEach(el => el.style.display = lang === 'zh' ? 'inline' : 'none');
+            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+            document.getElementById('btn-zh').className = lang === 'zh' ? 'active' : '';
+            localStorage.setItem('lang', lang);
+        }
+        // 加载保存的语言设置
+        const savedLang = localStorage.getItem('lang') || 'en';
+        setLang(savedLang);
+    </script>
 </body>
 </html>
