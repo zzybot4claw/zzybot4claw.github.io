@@ -1,104 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhenyu Zhang - Academic Homepage</title>
+    <title>你怎么找到这里的？！ - 张振宇</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#A0522D',
+                        dark: '#1E1E2E',
+                        'dark-gray': '#4E4E5E',
+                        'dark-bg': '#161618',
+                        'dark-card': '#252529',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
-        .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; padding: 40px; }
-        .lang-switch { position: absolute; top: 20px; right: 20px; }
-        .lang-switch button { padding: 8px 16px; margin-left: 5px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; }
-        .lang-switch button.active { background: #3498db; color: white; border-color: #3498db; }
-        header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #eee; }
-        h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
-        .affiliation { font-size: 1.2em; color: #666; margin-bottom: 10px; }
-        .affiliation a { color: #3498db; text-decoration: none; }
-        .contact-info { margin-top: 15px; font-size: 0.95em; color: #555; }
-        .contact-info a { color: #3498db; text-decoration: none; }
-        section { margin-bottom: 35px; }
-        h2 { font-size: 1.5em; color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #3498db; }
-        .research-interests { display: flex; flex-wrap: wrap; gap: 10px; }
-        .interest-tag { background: #e8f4f8; color: #2980b9; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; }
-        .publication { margin-bottom: 25px; padding: 15px; background: #fafafa; border-radius: 8px; border-left: 4px solid #3498db; }
-        .publication-title { font-size: 1.1em; font-weight: 600; color: #2c3e50; margin-bottom: 8px; }
-        .publication-authors { color: #555; margin-bottom: 5px; }
-        .publication-authors strong { color: #2980b9; }
-        .publication-venue { font-style: italic; color: #666; margin-bottom: 8px; }
-        .publication-doi { display: inline-block; background: #27ae60; color: white; padding: 4px 12px; border-radius: 4px; text-decoration: none; font-size: 0.85em; }
-        footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; color: #888; font-size: 0.9em; }
-        .zh { display: none; }
+        body {
+            font-family: 'Inter', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1E1E2E 0%, #161618 100%);
+            min-height: 100vh;
+            color: rgba(255, 255, 245, 0.86);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+        .meme-img {
+            transition: transform 0.3s ease;
+        }
+        .meme-img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 69, 19, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 69, 19, 0.6); }
+        }
+        .glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="lang-switch">
-            <button onclick="setLang('en')" id="btn-en" class="active">English</button>
-            <button onclick="setLang('zh')" id="btn-zh">中文</button>
+<body class="dark">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full top-0 z-50 bg-dark-bg/90 backdrop-blur-md border-b border-dark-gray/30">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🤔</span>
+                <span class="text-lg font-bold gradient-text">S.H.I.T Zone</span>
+            </div>
+            <div class="hidden md:flex gap-6">
+                <a href="#home" class="text-dark-gray hover:text-primary transition">首页</a>
+                <a href="#about" class="text-dark-gray hover:text-primary transition">关于</a>
+                <a href="#papers" class="text-dark-gray hover:text-primary transition">论文</a>
+                <a href="#memes" class="text-dark-gray hover:text-primary transition">表情包</a>
+            </div>
         </div>
-        
-        <header>
-            <h1><span class="en">Zhenyu Zhang</span><span class="zh">张振宇</span></h1>
-            <p class="affiliation"><a href="https://www.swjtu.edu.cn" target="_blank">Southwest Jiaotong University</a>, Chengdu, China</p>
-            <p class="affiliation"><span class="en">Ph.D. Candidate</span><span class="zh">博士研究生</span></p>
-            <div class="contact-info">
-                <p><span class="en">Email:</span><span class="zh">邮箱:</span> <a href="https://orcid.org/0009-0004-6613-4551" target="_blank">View on ORCID</a></p>
-                <p>ORCID: <a href="https://orcid.org/0009-0004-6613-4551" target="_blank">0009-0004-6613-4551</a></p>
-            </div>
-        </header>
+    </nav>
 
-        <section>
-            <h2><span class="en">Research Interests</span><span class="zh">研究方向</span></h2>
-            <div class="research-interests">
-                <span class="interest-tag">OTFS</span>
-                <span class="interest-tag"><span class="en">Wireless Communications</span><span class="zh">无线通信</span></span>
-                <span class="interest-tag"><span class="en">Channel Estimation</span><span class="zh">信道估计</span></span>
-                <span class="interest-tag"><span class="en">Next Generation Wireless</span><span class="zh">下一代无线通信</span></span>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="en">Publications</span><span class="zh">发表论文</span></h2>
+    <!-- Hero区域 -->
+    <section id="home" class="pt-32 pb-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="float-animation text-7xl mb-6">😅</div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                <span class="gradient-text">你怎么找到这里的？！</span>
+            </h1>
+            <p class="text-xl text-dark-gray mb-8">
+                欢迎来到张振宇的隐藏空间 🌟 <br>
+                <span class="text-sm">真理会过时，构石永恒</span>
+            </p>
             
-            <div class="publication">
-                <p class="publication-title">Cross-Frame OTFS Parameter Estimation Based on Chinese Remainder Theorem</p>
-                <p class="publication-authors"><strong>Z. Zhang</strong>, Q. Wang, G. Liu, F. Gao, and P. Fan</p>
-                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 2514-2527, 2026</p>
-                <a class="publication-doi" href="https://doi.org/10.1109/TWC.2025.3596965" target="_blank">DOI</a>
+            <!-- 标签 -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <span class="px-4 py-2 bg-dark-card rounded-full text-sm border border-dark-gray/30">🎓 博士研究生</span>
+                <span class="px-4 py-2 bg-dark-card rounded-full text-sm border border-dark-gray/30">📡 OTFS</span>
+                <span class="px-4 py-2 bg-dark-card rounded-full text-sm border border-dark-gray/30">📶 无线通信</span>
+                <span class="px-4 py-2 bg-dark-card rounded-full text-sm border border-dark-gray/30">🔬 信道估计</span>
             </div>
 
-            <div class="publication">
-                <p class="publication-title">Channel Estimation in Cross-Frame OTFS System With Ultra-High Mobility</p>
-                <p class="publication-authors"><strong>Z. Zhang</strong>, Q. Wang, G. Liu, P. Fan, and F. Gao</p>
-                <p class="publication-venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 12883-12896, 2026</p>
-                <a class="publication-doi" href="https://doi.org/10.1109/TWC.2026.3668101" target="_blank">DOI</a>
+            <!-- 链接按钮 -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://orcid.org/0009-0004-6613-4551" target="_blank" 
+                   class="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                    <i class="fas fa-link mr-2"></i>ORCID
+                </a>
+                <a href="https://www.swjtu.edu.cn" target="_blank" 
+                   class="px-6 py-3 bg-dark-card border border-dark-gray/50 hover:border-primary text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
+                    <i class="fas fa-school mr-2"></i>西南交通大学
+                </a>
+                <a href="mailto:zhangzhenyu_001@163.com" 
+                   class="px-6 py-3 bg-dark-card border border-dark-gray/50 hover:border-primary text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
+                    <i class="fas fa-envelope mr-2"></i>联系邮箱
+                </a>
             </div>
+        </div>
+    </section>
 
-            <div class="publication">
-                <p class="publication-title">An AOA Limited Scattering Model and Its Statistics in Next Generation Wireless Communications</p>
-                <p class="publication-authors"><strong>Z. Zhang</strong> and P. Deng</p>
-                <p class="publication-venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 3, pp. 5130-5134, Mar. 2025</p>
-                <a class="publication-doi" href="https://doi.org/10.1109/TVT.2024.3492232" target="_blank">DOI</a>
+    <!-- 表情包画廊 -->
+    <section id="memes" class="py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">
+                <span class="gradient-text">🖼️ 表情包展示</span>
+            </h2>
+            <p class="text-center text-dark-gray mb-8">前方高能！非战斗人员请迅速撤离！</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-11 165705.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-11 165717.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-15 163139.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-10-22 230033.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-12 111513.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-23 212508.gif" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-07 234038.jpg" alt="meme" class="w-full h-48 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-07 234044.jpg" alt="meme" class="w-full h-48 object-cover">
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
-            <p><span class="en">Last updated:</span><span class="zh">最后更新:</span> March 2026</p>
-        </footer>
+    <!-- 关于我 -->
+    <section id="about" class="py-12 px-4 bg-dark-bg/50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">
+                <span class="gradient-text">👤 关于我</span>
+            </h2>
+            
+            <div class="bg-dark-card rounded-2xl p-8 border border-dark-gray/30 card-hover">
+                <div class="flex items-start gap-6">
+                    <div class="text-6xl">🎓</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">张振宇</h3>
+                        <p class="text-primary font-medium mb-4">博士研究生 | 西南交通大学</p>
+                        
+                        <div class="space-y-3 text-dark-gray">
+                            <p>📍 成都，中国</p>
+                            <p>🏛️ 研究方向：</p>
+                            <ul class="list-disc list-inside ml-4 space-y-1">
+                                <li>正交时频空（OTFS）调制</li>
+                                <li>无线通信系统</li>
+                                <li>信道估计技术</li>
+                                <li>下一代移动通信（6G）</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-dark-bg rounded-xl border border-primary/30">
+                            <p class="text-sm text-dark-gray">
+                                <span class="text-primary font-bold">⚠️ 警告：</span>
+                                既然你找到了这里，说明我们有缘！
+                                恭喜你发现了隐藏关卡！🎉
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 论文发表 -->
+    <section id="papers" class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">
+                <span class="gradient-text">📚 学术产出</span>
+            </h2>
+            
+            <div class="space-y-4">
+                <!-- 论文1 -->
+                <div class="bg-dark-card rounded-xl p-6 border border-dark-gray/30 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl">📄</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Cross-Frame OTFS Parameter Estimation Based on Chinese Remainder Theorem
+                            </h3>
+                            <p class="text-dark-gray mb-2">
+                                <strong class="text-primary">Z. Zhang</strong>, Q. Wang, G. Liu, F. Gao, and P. Fan
+                            </p>
+                            <p class="text-sm text-green-400 mb-3">
+                                <i class="fas fa-book mr-2"></i>IEEE Transactions on Wireless Communications
+                                <span class="ml-2">vol. 25, pp. 2514-2527, 2026</span>
+                            </p>
+                            <a href="https://doi.org/10.1109/TWC.2025.3596965" target="_blank" 
+                               class="inline-flex items-center px-4 py-2 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg text-sm transition">
+                                <i class="fas fa-external-link-alt mr-2"></i>查看论文
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 论文2 -->
+                <div class="bg-dark-card rounded-xl p-6 border border-dark-gray/30 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl">📄</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                Channel Estimation in Cross-Frame OTFS System With Ultra-High Mobility
+                            </h3>
+                            <p class="text-dark-gray mb-2">
+                                <strong class="text-primary">Z. Zhang</strong>, Q. Wang, G. Liu, P. Fan, and F. Gao
+                            </p>
+                            <p class="text-sm text-green-400 mb-3">
+                                <i class="fas fa-book mr-2"></i>IEEE Transactions on Wireless Communications
+                                <span class="ml-2">vol. 25, pp. 12883-12896, 2026</span>
+                            </p>
+                            <a href="https://doi.org/10.1109/TWC.2026.3668101" target="_blank" 
+                               class="inline-flex items-center px-4 py-2 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg text-sm transition">
+                                <i class="fas fa-external-link-alt mr-2"></i>查看论文
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 论文3 -->
+                <div class="bg-dark-card rounded-xl p-6 border border-dark-gray/30 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl">📄</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-white mb-2">
+                                An AOA Limited Scattering Model and Its Statistics in Next Generation Wireless Communications
+                            </h3>
+                            <p class="text-dark-gray mb-2">
+                                <strong class="text-primary">Z. Zhang</strong> and P. Deng
+                            </p>
+                            <p class="text-sm text-green-400 mb-3">
+                                <i class="fas fa-book mr-2"></i>IEEE Transactions on Vehicular Technology
+                                <span class="ml-2">vol. 74, no. 3, pp. 5130-5134, Mar. 2025</span>
+                            </p>
+                            <a href="https://doi.org/10.1109/TVT.2024.3492232" target="_blank" 
+                               class="inline-flex items-center px-4 py-2 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg text-sm transition">
+                                <i class="fas fa-external-link-alt mr-2"></i>查看论文
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 更多表情包 -->
+    <section class="py-12 px-4 bg-dark-bg/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">
+                <span class="gradient-text">🎭 表情包续集</span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-03 004912.jpg" alt="meme" class="w-full h-40 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-11-21 151557.gif" alt="meme" class="w-full h-40 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-12 111530.jpg" alt="meme" class="w-full h-40 object-cover">
+                </div>
+                <div class="meme-img rounded-xl overflow-hidden card-hover">
+                    <img src="2017-12-22 190347.jpg" alt="meme" class="w-full h-40 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="py-8 px-4 border-t border-dark-gray/30">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-dark-gray mb-2">
+                😅 既然看完了，就点个赞再走吧！
+            </p>
+            <p class="text-sm text-dark-gray/60">
+                Last updated: March 2026 | Made with 💩 and ❤️
+            </p>
+        </div>
+    </footer>
+
+    <!-- 彩蛋 -->
+    <div class="fixed bottom-6 right-6 text-4xl cursor-pointer hover:scale-110 transition transform glow rounded-full p-2"
+         onclick="alert('🎉 恭喜你发现了彩蛋！你是天选之人！⭐\n\n真理会过时，构石永恒！')">
+        🎁
     </div>
 
     <script>
-        function setLang(lang) {
-            document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
-            document.querySelectorAll('.zh').forEach(el => el.style.display = lang === 'zh' ? 'inline' : 'none');
-            document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
-            document.getElementById('btn-zh').className = lang === 'zh' ? 'active' : '';
-            localStorage.setItem('lang', lang);
-        }
-        // 加载保存的语言设置
-        const savedLang = localStorage.getItem('lang') || 'en';
-        setLang(savedLang);
+        // 滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
     </script>
 </body>
 </html>
