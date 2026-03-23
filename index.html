@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你怎么找到这里的？！</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* 顶部大字 */
+        .hero {
+            margin-bottom: 50px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8em;
+            color: #ffd93d;
+        }
+
+        /* 表情包展示区 */
+        .meme-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .meme-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .meme-item:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .meme-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* 导航按钮 */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .btn-red { background: #ff6b6b; color: white; }
+        .btn-yellow { background: #ffd93d; color: #333; }
+        .btn-green { background: #6bcb77; color: white; }
+        .btn-blue { background: #4d96ff; color: white; }
+        .btn-purple { background: #9b59b6; color: white; }
+
+        /* 内容卡片 */
+        .content-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .content-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffd93d;
+        }
+
+        .content-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* 标签 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* 页脚 */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* 彩蛋 */
+        .easter-egg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 3em;
+            cursor: pointer;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* 弹幕效果 */
+        .danmu {
+            position: fixed;
+            white-space: nowrap;
+            animation: fly 10s linear infinite;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #000;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes fly {
+            from { left: 100%; }
+            to { left: -100%; }
+        }
+
+        .danmu-1 { top: 10%; color: #ff6b6b; animation-duration: 8s; }
+        .danmu-2 { top: 25%; color: #ffd93d; animation-duration: 12s; }
+        .danmu-3 { top: 40%; color: #6bcb77; animation-duration: 10s; }
+        .danmu-4 { top: 55%; color: #4d96ff; animation-duration: 9s; }
+        .danmu-5 { top: 70%; color: #ff9ff3; animation-duration: 11s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部 -->
+        <div class="hero">
+            <h1>😅 你怎么找到这里的？！</h1>
+            <p class="subtitle"> Welcome to the hidden world! 🌟</p>
+        </div>
+
+        <!-- 弹幕 -->
+        <div class="danmu danmu-1">震惊！有人发现了我的秘密基地！🤯</div>
+        <div class="danmu danmu-2">这不是演习！重复！这不是演习！🚨</div>
+        <div class="danmu danmu-3">捕捉到一只野生访客！🦊</div>
+        <div class="danmu danmu-4">载入中... 载入失败... 😅</div>
+        <div class="danmu danmu-5">前方高能！🔥</div>
+
+        <!-- 表情包展示 -->
+        <div class="meme-gallery">
+            <div class="meme-item">
+                <img src="2017-12-11 165705.gif" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-11 165717.gif" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-15 163139.gif" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-10-22 230033.gif" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-12 111513.gif" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-23 212508.gif" alt="meme">
+            </div>
+        </div>
+
+        <!-- 关于我 -->
+        <div class="content-card">
+            <h2>👋 嗨！我是张振宇</h2>
+            <p>🎓 西南交通大学 博士研究生</p>
+            <p>📡 研究方向：OTFS、无线通信、信道估计、下一代移动通信</p>
+            
+            <div class="tags">
+                <span class="tag">📶 5G/6G</span>
+                <span class="tag">🔬 通信算法</span>
+                <span class="tag">📊 信号处理</span>
+                <span class="tag">🎯 OTFS</span>
+            </div>
+
+            <p>🏠 这个页面本来是正常的学术主页，但既然你发现了...</p>
+            <p style="color: #ff6b6b; font-size: 1.3em;">恭喜你！你已经通过了隐藏关卡！🎉</p>
+        </div>
+
+        <!-- 发表论文 -->
+        <div class="content-card">
+            <h2>📚 学术产出（正经版）</h2>
+            
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid #4d96ff;">
+                <p style="font-weight: bold; color: #ffd93d;">Cross-Frame OTFS Parameter Estimation Based on Chinese Remainder Theorem</p>
+                <p><strong>Z. Zhang</strong>, Q. Wang, G. Liu, F. Gao, and P. Fan</p>
+                <p style="color: #6bcb77;">IEEE Transactions on Wireless Communications, vol. 25, pp. 2514-2527, 2026</p>
+                <a href="https://doi.org/10.1109/TWC.2025.3596965" target="_blank" style="display: inline-block; background: #ff6b6b; color: white; padding: 5px 15px; border-radius: 5px; text-decoration: none; margin-top: 10px;">📎 查看论文</a>
+            </div>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid #4d96ff;">
+                <p style="font-weight: bold; color: #ffd93d;">Channel Estimation in Cross-Frame OTFS System With Ultra-High Mobility</p>
+                <p><strong>Z. Zhang</strong>, Q. Wang, G. Liu, P. Fan, and F. Gao</p>
+                <p style="color: #6bcb77;">IEEE Transactions on Wireless Communications, vol. 25, pp. 12883-12896, 2026</p>
+                <a href="https://doi.org/10.1109/TWC.2026.3668101" target="_blank" style="display: inline-block; background: #ff6b6b; color: white; padding: 5px 15px; border-radius: 5px; text-decoration: none; margin-top: 10px;">📎 查看论文</a>
+            </div>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid #4d96ff;">
+                <p style="font-weight: bold; color: #ffd93d;">An AOA Limited Scattering Model and Its Statistics in Next Generation Wireless Communications</p>
+                <p><strong>Z. Zhang</strong> and P. Deng</p>
+                <p style="color: #6bcb77;">IEEE Transactions on Vehicular Technology, vol. 74, no. 3, pp. 5130-5134, Mar. 2025</p>
+                <a href="https://doi.org/10.1109/TVT.2024.3492232" target="_blank" style="display: inline-block; background: #ff6b6b; color: white; padding: 5px 15px; border-radius: 5px; text-decoration: none; margin-top: 10px;">📎 查看论文</a>
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <div class="nav-buttons">
+            <a href="https://orcid.org/0009-0004-6613-4551" target="_blank" class="nav-btn btn-blue">🔗 ORCID</a>
+            <a href="https://www.swjtu.edu.cn" target="_blank" class="nav-btn btn-green">🏫 学校官网</a>
+            <a href="mailto:zhangzhenyu_001@163.com" class="nav-btn btn-red">📧 给我发邮件</a>
+        </div>
+
+        <!-- 更多表情包 -->
+        <div class="meme-gallery">
+            <div class="meme-item">
+                <img src="2017-12-07 234038.jpg" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-07 234044.jpg" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-12-03 004912.jpg" alt="meme">
+            </div>
+            <div class="meme-item">
+                <img src="2017-11-21 151557.gif" alt="meme">
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <footer>
+            <p>😅 既然看完了，就点个赞再走吧！</p>
+            <p style="margin-top: 10px;">Last updated: March 2026</p>
+        </footer>
+    </div>
+
+    <!-- 彩蛋 -->
+    <div class="easter-egg" onclick="alert('🎉 恭喜你发现了彩蛋！你是天选之人！⭐')">🎁</div>
+
+    <script>
+        // 随机弹幕
+        const danmus = [
+            "程序员的生活就是这样子的 💻",
+            "代码写完了吗你就来逛 🎯",
+            "头发还在吗？ 😂",
+            "debug五分钟，咖啡两小时 ☕",
+            "这个Bug我也不知道为什么 🤦",
+            "明天再改，今天先玩会儿 🎮",
+            "论文写完了吗？ 📄",
+            " OTFS yyds! ⚡",
+            "信道估计也太难了吧 😵",
+            "恭喜你发现随机弹幕！ 🎊"
+        ];
+
+        // 每隔几秒更新弹幕
+        setInterval(() => {
+            const danmuElements = document.querySelectorAll('.danmu');
+            danmuElements.forEach((el, index) => {
+                if (Math.random() > 0.5) {
+                    el.textContent = danmus[Math.floor(Math.random() * danmus.length)];
+                }
+            });
+        }, 5000);
+
+        // 鼠标跟随效果
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.body.style.backgroundPosition = `${x * 50}% ${y * 50}%`;
+        });
+    </script>
+</body>
+</html>
